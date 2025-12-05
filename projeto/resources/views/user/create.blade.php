@@ -8,6 +8,14 @@
 <body>
     <h1>cadastrar Usúario</h1>
 
+    @if (session('success'))
+        <p style="color: rgba(23, 0, 228, 1);">{{ session('success') }}</p>
+    @endif
+
+    @if (session('error'))
+        <p style="color: #f00;">{{ session('error') }}</p>
+    @endif
+
     <form action="{{ route('user.store') }}" method="POST">
         @csrf
 
