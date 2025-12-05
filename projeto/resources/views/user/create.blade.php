@@ -3,33 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <title>Create</title>
 </head>
 <body>
-    <h1>cadastrar Usúario</h1>
+    <div class="main-container">
+        <header class="header">
+            <div class="content-header">
+                <h2 class="title-logo">
+                    <a href="{{ route('dashboard') }}">VeredaTech</a>
+                </h2>
 
-    @if (session('success'))
-        <p style="color: rgba(23, 0, 228, 1);">{{ session('success') }}</p>
-    @endif
+                <ul class="list-nav-link">
+                    <li><a class="nav-link" href="#">Usuários</a></li>
+                    <li><a class="nav-link" href="{{ route('dashboard') }}">Sair</a></li>
+                </ul>
+            </div>
+        </header>
 
-    @if (session('error'))
-        <p style="color: #f00;">{{ session('error') }}</p>
-    @endif
+        <h1>cadastrar Usuário</h1>
 
-    <form action="{{ route('user.store') }}" method="POST">
-        @csrf
+        @if (session('success'))
+            <p style="color: rgba(23, 0, 228, 1);">{{ session('success') }}</p>
+        @endif
 
-        <label for="name">Nome</label>
-        <input type="text" id="name" name="name" placeholder="Nome Completo">
+        @if (session('error'))
+            <p style="color: #f00;">{{ session('error') }}</p>
+        @endif
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" placeholder="Melhor Email">
+        <form action="{{ route('user.store') }}" method="POST">
+            @csrf
 
-        <label for="password">Senha:</label>
-        <input type="password" id="password" name="password">
+            <label for="name">Nome</label>
+            <input type="text" id="name" name="name" placeholder="Nome Completo">
 
-        <button type="submit">Cadastrar</button>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Melhor Email">
 
-    </form>
+            <label for="password">Senha:</label>
+            <input type="password" id="password" name="password">
+
+            <button type="submit">Cadastrar</button>
+        </form>
+    </div>
 </body>
 </html>
